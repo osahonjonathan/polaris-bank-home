@@ -1,0 +1,50 @@
+<section class="wrapper">
+  <div class="innerLayer">
+    <h3>POLARIS BANK LIMITED - ADMINISTRATION HOME</h3>
+    <hr style="background-color: #521c78; height: 1px; margin-bottom: 30px" />
+    <p class="italic">
+      Welcome <span style="font-weight: bold">{{ currentUser }}</span
+      >, please click the menu item above to navigate to the operation area of
+      your choice
+    </p>
+    <div class="dotted"></div>
+    <div class="box1">
+      <div class="table-title">
+        <h5>Activities Requiring your Attention</h5>
+      </div>
+      <div class="table-details">
+        <p>
+          Items pending your attention. For full details on each item, click on
+          the activity url
+        </p>
+        <div class="table">
+          <app-table-utils [data]="data" [columns]="columns"></app-table-utils>
+        </div>
+      </div>
+    </div>
+    <div class="box2">
+      <div class="innerBox1">
+        <div class="table-title">
+          <h5>Admin Reports</h5>
+        </div>
+        <div class="table-details2">
+          <p>
+            Use this option to view and run different available reports. For
+            full option details, Click Report menu on the side navigation.
+          </p>
+        </div>
+      </div>
+      <div class="innerBox2">
+        <div class="table-title">
+          <h5>Remitly Payout</h5>
+        </div>
+        <div class="table-details2">
+          <p>
+            Use this option to view and manage Remitly IMTO transfer. For
+            full option details, Click Remitly-PayOut menu on the side navigation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

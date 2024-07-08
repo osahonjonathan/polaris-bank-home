@@ -1,0 +1,57 @@
+<div class="data-table">
+  <!-- Controls section: page size selector and search input -->
+  <div class="data-table__controls">
+    <div class="col-6">
+      <label class="mb-0">Show </label>
+      <select
+        class="form-group select"
+        (change)="changePageSize($event)"
+        [(ngModel)]="pageSize"
+      >
+        <option value="10">10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+      entries
+    </div>
+    <div>
+      Search:
+      <input type="text" class="input" (input)="onSearch($event)" />
+    </div>
+  </div>
+
+  <!-- Table section: headers, data rows, and pagination -->
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let column of columns" (click)="sort(column)">
+          {{ column.label }}
+          <span *ngIf="sortColumn === column.key">
+            {{ sortOrder === "asc" ? "↑" : "↓" }}
+          </span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of paginatedData">
+        <td *ngFor="let column of columns">{{ item[column.key] }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination section: previous and next buttons -->
+  <div class="data-table__pagination">
+    <div class="data-table__info">
+        Showing {{ startItem }} to {{ endItem }} of {{ totalItems }} entries
+      </div>
+    <div>
+      <button class="prev" (click)="previousPage()" [disabled]="currentPage === 1">
+        Previous
+      </button>
+      <button class="next" (click)="nextPage()" [disabled]="currentPage === totalPages">
+        Next
+      </button>
+    </div>
+  </div>
+</div>

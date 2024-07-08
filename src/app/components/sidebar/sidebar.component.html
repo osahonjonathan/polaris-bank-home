@@ -1,0 +1,26 @@
+<div class="sidebar">
+  <ul class="list-items">
+    <li *ngFor="let item of sideBarMenu" class="firstLi">
+      <div
+        [routerLink]="item.route"
+        (click)="toggleSubMenu(item)"
+        class="list1"
+        [class.active]="item.isOpen"
+      >
+        <ng-container *ngIf="item.showIcon">
+          <img [src]="item.isOpen ? item.goldenIcon : item.icon" alt="" />
+        </ng-container>
+        <a>{{ item.title }}</a>
+        <span *ngIf="item.showSubMenu">{{ item.isOpen ? '▲' : '▼' }}</span>
+      </div>
+      <ul *ngIf="item.isOpen && item.showSubMenu" class="submenu">
+        <li *ngFor="let subItem of item.subMenu">
+          <ng-container *ngIf="subItem.showIcon">
+            <i [class]="subItem.icon"></i>
+          </ng-container>
+          <a [routerLink]="subItem.route">{{ subItem.title }}</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
